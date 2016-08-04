@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>angularjs 中 ng-repeat | 草衣的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="草衣">
+  
+  
+    <meta name="description" content="##select中的ng-repeat的用法
+###常规的select标签为:拿选择一个城市来说明12345&amp;lt;select name=&quot;&quot; id=&quot;&quot; ng-model=&quot;city_id&quot;&amp;gt;    &amp;lt;option value=&quot;311&quot;&amp;gt;西安&amp;lt;/option&amp;gt;    &amp;lt;option value=&quot;312&quot;&amp;gt;上海&amp;lt;/option&amp;gt;    &amp;">
+  
+  <meta name="description" content="##select中的ng-repeat的用法
+###常规的select标签为:拿选择一个城市来说明12345&amp;lt;select name=&quot;&quot; id=&quot;&quot; ng-model=&quot;city_id&quot;&amp;gt;    &amp;lt;option value=&quot;311&quot;&amp;gt;西安&amp;lt;/option&amp;gt;    &amp;lt;option value=&quot;312&quot;&amp;gt;上海&amp;lt;/option&amp;gt;    &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="angularjs 中 ng-repeat">
+<meta property="og:url" content="http://yoursite.com/2016/08/04/angularjs-中-ng-repeat.html">
+<meta property="og:site_name" content="草衣的博客">
+<meta property="og:description" content="##select中的ng-repeat的用法
+###常规的select标签为:拿选择一个城市来说明12345&amp;lt;select name=&quot;&quot; id=&quot;&quot; ng-model=&quot;city_id&quot;&amp;gt;    &amp;lt;option value=&quot;311&quot;&amp;gt;西安&amp;lt;/option&amp;gt;    &amp;lt;option value=&quot;312&quot;&amp;gt;上海&amp;lt;/option&amp;gt;    &amp;">
+<meta property="og:updated_time" content="2016-08-04T07:35:53.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="angularjs 中 ng-repeat">
+<meta name="twitter:description" content="##select中的ng-repeat的用法
+###常规的select标签为:拿选择一个城市来说明12345&amp;lt;select name=&quot;&quot; id=&quot;&quot; ng-model=&quot;city_id&quot;&amp;gt;    &amp;lt;option value=&quot;311&quot;&amp;gt;西安&amp;lt;/option&amp;gt;    &amp;lt;option value=&quot;312&quot;&amp;gt;上海&amp;lt;/option&amp;gt;    &amp;">
+  
+    <link rel="alternate" href="/atom.xml" title="草衣的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">草衣的博客</a></h1>
+    <p><a href="/"></a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2016/08/04/angularjs-中-ng-repeat.html">
+  <time datetime="2016-08-04T07:09:53.000Z">
+    2016-08-04
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">angularjs 中 ng-repeat</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>##select中的ng-repeat的用法</p>
+<p>###常规的select标签为:拿选择一个城市来说明<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;select name="" id="" ng-model="city_id"&gt;</div><div class="line">    &lt;option value="311"&gt;西安&lt;/option&gt;</div><div class="line">    &lt;option value="312"&gt;上海&lt;/option&gt;</div><div class="line">    &lt;option value="313"&gt;北京&lt;/option&gt;</div><div class="line">&lt;/select&gt;</div></pre></td></tr></table></figure></p>
+<p>####在这里,ng-model里面的值为向后台提交的值,当选择好option中的某一项时,便会把这一项的value值提交给后台.</p>
+<p>###使用ng-repeat自动生成多个option<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;select name=<span class="string">""</span> id=<span class="string">""</span> ng-model=<span class="string">"city_id"</span>&gt;</div><div class="line">    &lt;option value="city.regin_id" ng-repeat="city in cityList"&gt;&#123;&#123;city.name&#125;&#125;&lt;option&gt;</div><div class="line">&lt;select&gt;</div></pre></td></tr></table></figure></p>
+<p>####在这种情况下,只要有一个cityList列表,每一个城市都是列表中的一个包含regin_id和name的对象,此时提交的时候就会把选择的city.regin_id的值提交给后台.</p>
+<p>###在select中使用ng-repeat<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;select name=<span class="string">""</span> id=<span class="string">""</span> ng-model=<span class="string">"city_id"</span> ng-options=<span class="string">"city.regin_id as city.name for city in citylists"</span>&gt;</div><div class="line">&lt;/select&gt;</div></pre></td></tr></table></figure></p>
+<p>####在这种情况下,city.regin_id 和city.name跟上一种情况表示的是一样的,其中city.regin_id 和as 列为一组 city.name 和for列为一组 ,若要想省略,只能一组一组的省略.</p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">草衣</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

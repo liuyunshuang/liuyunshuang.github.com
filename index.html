@@ -59,6 +59,46 @@
   <header>
     
       <div class="icon"></div>
+      <a href="/2016/08/04/angularjs-中-ng-repeat.html">
+  <time datetime="2016-08-04T07:09:53.000Z">
+    2016-08-04
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2016/08/04/angularjs-中-ng-repeat.html">angularjs 中 ng-repeat</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>##select中的ng-repeat的用法</p>
+<p>###常规的select标签为:拿选择一个城市来说明<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;select name="" id="" ng-model="city_id"&gt;</div><div class="line">    &lt;option value="311"&gt;西安&lt;/option&gt;</div><div class="line">    &lt;option value="312"&gt;上海&lt;/option&gt;</div><div class="line">    &lt;option value="313"&gt;北京&lt;/option&gt;</div><div class="line">&lt;/select&gt;</div></pre></td></tr></table></figure></p>
+<p>####在这里,ng-model里面的值为向后台提交的值,当选择好option中的某一项时,便会把这一项的value值提交给后台.</p>
+<p>###使用ng-repeat自动生成多个option<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;select name=<span class="string">""</span> id=<span class="string">""</span> ng-model=<span class="string">"city_id"</span>&gt;</div><div class="line">    &lt;option value="city.regin_id" ng-repeat="city in cityList"&gt;&#123;&#123;city.name&#125;&#125;&lt;option&gt;</div><div class="line">&lt;select&gt;</div></pre></td></tr></table></figure></p>
+<p>####在这种情况下,只要有一个cityList列表,每一个城市都是列表中的一个包含regin_id和name的对象,此时提交的时候就会把选择的city.regin_id的值提交给后台.</p>
+<p>###在select中使用ng-repeat<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;select name=<span class="string">""</span> id=<span class="string">""</span> ng-model=<span class="string">"city_id"</span> ng-options=<span class="string">"city.regin_id as city.name for city in citylists"</span>&gt;</div><div class="line">&lt;/select&gt;</div></pre></td></tr></table></figure></p>
+<p>####在这种情况下,city.regin_id 和city.name跟上一种情况表示的是一样的,其中city.regin_id 和as 列为一组 city.name 和for列为一组 ,若要想省略,只能一组一组的省略.</p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <a href="/2016/08/02/怎么设置sublime-主题.html">
   <time datetime="2016-08-02T09:11:18.000Z">
     2016-08-02
